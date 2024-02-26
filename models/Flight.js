@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const destinationSchema = require('./Destination');
 
 const flightSchema = new mongoose.Schema({
     airline: {
@@ -22,7 +23,8 @@ const flightSchema = new mongoose.Schema({
         default: function() {
             return new Date().setFullYear(new Date().getFullYear() + 1);
         }
-    }
+    },
+    destinations: [destinationSchema]
 });
 
 const Flight = mongoose.model('Flight', flightSchema);
